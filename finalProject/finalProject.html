@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="projectJS.js" defer></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <link rel="stylesheet" href="projectCSS.css">
+            <title>WEB-115 Final Project</title>
+        </head>
+        <body>
+            <div id="banner">
+                <h1>Build Your Meal Plan</h1>
+                <img id="logo" src="ppfLogo.png" alt="Perfectly Portioned Logo" width="200">
+                <p id="name"></p>
+                <p id="course"></p>
+                <p id="section"></p>
+            </div>
+            <form id="inputForm">
+                <br>
+                <div id="inputDiv">
+                <h3>Tell us about your goal for the week:</h3>
+                <label for="goal">Goal</label><br>
+                <select id="goal">
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Maintain Weight">Maintain Weight</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                    <option value="Happiness">Happiness</option>
+                </select><br><br>
+                <h3>Please provide your name and a valid email address:</h3>
+                <label for="mname">Full Name:</label><br>
+                <input type="text" id="mname" name="mname"><br><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br><br>
+                <input type="button" id="validButton" value="Validate Email">   <input type="button" id="clearButton1" value="Start Over">
+                </div>
+            </form>
+            <br>
+            <form id="mealForm">
+                <div id="mealDiv">
+                <label for="meal1">Monday:</label><br>
+                <input type="text" id="meal1" name="meal1"><br><br>
+                <input type="button" id="submitButton" value="Submit Here">    <input type="button" id="clearButton2" value="Start Over">
+                </div>
+            </form>
+        </body>
+    </html>
