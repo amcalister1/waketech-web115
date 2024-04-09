@@ -4,13 +4,37 @@ document.getElementById('course').textContent = "Course: WEB115";
 document.getElementById('section').textContent = "Section: 0001";
 
 //Arrays for meals and days of week
-meals = ['Breakfast', 'Morning Snack', 'Lunch', 'Afternoon Snack', 'Dinner']
-days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+let meals = ['Breakfast', 'Morning Snack', 'Lunch', 'Afternoon Snack', 'Dinner'];
+let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 //Hides the meal form until the email address is validated
 $(document).ready(function(){
       $('#mealForm').hide();
     });
+
+//Create a variable to access the meal div
+let mealDiv = document.getElementById('mealDiv');
+
+//Function to create meal choice inputs
+function mealChoice(){
+    for (let i = 0; i < days.length; i++) {
+        let day = days[i];
+        let dayHeading = document.createElement('h4');
+        dayHeading.textContent = day + " Meal Choices\n";
+        mealDiv.appendChild(dayHeading);
+        for (let j = 0; j < meals.length; j++) {
+            let meal = meals[j]
+            let mealInput = document.createElement('input');
+            mealInput.setAttribute('type', 'text');
+            mealInput.setAttribute('placeholder', day + " " + meal);
+            mealDiv.appendChild(mealInput);
+            mealInput.setAttribute('id', day + '_' + meal.replace(' ','_'))
+            let newLine = document.createElement('p');
+            newLine.textContent = "\n";
+            mealDiv.appendChild(newLine);
+        }
+    }
+}
 
 //Validates the email address
 let valBtn = document.getElementById("validButton");
@@ -18,28 +42,29 @@ let valBtn = document.getElementById("validButton");
             let email1 = document.getElementById('email').value;
             //Got this regex pattern from Google. Looked at so many that I do not know which one right now.  It was a stright Google search though...NOT ChatGPT!
             let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-            if (emailRegex.test(email1)) {
-                $(document).ready(function(){
-                      $('#mealForm').show();
-                    ;
-                  });
+            if (!emailRegex.test(email1)) {
+                window.alert("Please enter a valid email address!");
             }
             else {
-                window.alert("Please enter a valid email address!");
+                $(document).ready(function(){
+                    $('#mealForm').show();
+                  ;
+                });
+            mealChoice();
             }
 		});
 
 //Clear/Reset option for the goals, name and email form
 let clrBtn1 = document.getElementById("clearButton1");
 clrBtn1.addEventListener("click", function() {
-document.getElementById("inputForm").reset();
+    document.getElementById("inputForm").reset();
 });
 
-//Clear/Reset option for the meal form
+// Clear/Reset option for the meal form
 let clrBtn2 = document.getElementById("clearButton2");
-        clrBtn2.addEventListener("click", function() {
-        document.getElementById("mealForm").reset();
-		});
+clrBtn2.addEventListener("click", function() {
+    document.getElementById("mealForm").reset();
+});
 
 //Creates html on the fly window for results of input and meal forms.
 document.getElementById("submitButton").addEventListener('click',flyWindow)

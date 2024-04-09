@@ -1,12 +1,12 @@
 #banner {
     background-color: #563667;
-    color: white;
+    color: #F6EEE3;
     padding: 10px;
     text-align: center;
   }
 
 #banner img {
-    border: 5px solid white;
+    border: 5px solid #F6EEE3;
 }
 
 #inputDiv {
