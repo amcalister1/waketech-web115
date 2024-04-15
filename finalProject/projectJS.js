@@ -35,7 +35,7 @@ let valBtn = document.getElementById("validButton");
                 });
             // Wanted to hide the inputButtons once email validation is complete.  I feel like this would help prevent confusion for a user.
             $(document).ready(function(){
-                $('#inputButtons').hide();
+                $('#inputForm').hide();
                 });
             mealChoice();
             }
@@ -55,7 +55,7 @@ let mealForm = document.getElementById('mealForm');
 function mealChoice(){
     let goal = document.getElementById('goal').value;
     let headStatement = document.createElement('h2');
-        headStatement.textContent = 'Thank you for sharing you goal of "' + goal + '" with us.  Please filled out your meal planner below.\n';
+        headStatement.textContent = 'Thank you for sharing you goal of "' + goal + '" with us.  Please fill out your meal planner below.\n';
         mealForm.appendChild(headStatement);
     for (let i = 0; i < days.length; i++) {
         let day = days[i];
@@ -102,15 +102,19 @@ function flyWindow() {
       };
     myText = ("<html>\n<head>\n<title>Welcome to your Meal Plan!</title>\n</head>\n<body>\n");
     myText += ("<h2>Hello " + memberName + "!  This meal plan was created exactly for you!  Perfectly Portioned Fitness hopes it helps you meet your " + goal + " goal</h2>\n");
-    myText += ("<h4>Monday</h4>Breakfast: " + meal1 + "<br>Morning Snack: " + meal2 + "<br>Lunch: " + meal3 + "<br>Afternoon Snack: " + meal4 + "<br>Dinner: " + meal5);
-    myText += ("<h4>Tuesday</h4>Breakfast: " + meal6 + "<br>Morning Snack: " + meal7 + "<br>Lunch: " + meal8 + "<br>Afternoon Snack: " + meal9 + "<br>Dinner: " + meal10);
-    myText += ("<h4>Wednesday</h4>Breakfast: " + meal11 + "<br>Morning Snack: " + meal12 + "<br>Lunch: " + meal13 + "<br>Afternoon Snack: " + meal14 + "<br>Dinner: " + meal15);
-    myText += ("<h4>Thursday</h4>Breakfast: " + meal16 + "<br>Morning Snack: " + meal17 + "<br>Lunch: " + meal18 + "<br>Afternoon Snack: " + meal19 + "<br>Dinner: " + meal20);
-    myText += ("<h4>Friday</h4>Breakfast: " + meal21 + "<br>Morning Snack: " + meal22 + "<br>Lunch: " + meal23 + "<br>Afternoon Snack: " + meal24 + "<br>Dinner: " + meal25);
-    myText += ("<h4>Saturday</h4>Breakfast: " + meal26 + "<br>Morning Snack: " + meal27 + "<br>Lunch: " + meal28 + "<br>Afternoon Snack: " + meal29 + "<br>Dinner: " + meal30);
-    myText += ("<h4>Sunday</h4>Breakfast: " + meal31 + "<br>Morning Snack: " + meal32 + "<br>Lunch: " + meal33 + "<br>Afternoon Snack: " + meal34 + "<br>Dinner: " + meal35 + "<br>");
+    myText += ("<h4>" + days[0] + "</h4>" + meals[0] + ": " + meal1 + "<br>" + meals[1] + ": " + meal2 + "<br>" + meals[2] + ": " + meal3 + "<br>" + meals[3] + ": " + meal4 + "<br>" + meals[4] + ": " + meal5);
+    myText += ("<h4>" + days[1] + "</h4>" + meals[0] + ": " + meal6 + "<br>" + meals[1] + ": " + meal7 + "<br>" + meals[2] + ": " + meal8 + "<br>" + meals[3] + ": " + meal9 + "<br>" + meals[4] + ": " + meal10);
+    myText += ("<h4>" + days[2] + "</h4>" + meals[0] + ": " + meal11 + "<br>" + meals[1] + ": " + meal12 + "<br>" + meals[2] + ": " + meal13 + "<br>" + meals[3] + ": " + meal14 + "<br>" + meals[4] + ": " + meal15);
+    myText += ("<h4>" + days[3] + "</h4>" + meals[0] + ": " + meal16 + "<br>" + meals[1] + ": " + meal17 + "<br>" + meals[2] + ": " + meal18 + "<br>" + meals[3] + ": " + meal19 + "<br>" + meals[4] + ": " + meal20);
+    myText += ("<h4>" + days[4] + "</h4>" + meals[0] + ": " + meal21 + "<br>" + meals[1] + ": " + meal22 + "<br>" + meals[2] + ": " + meal23 + "<br>" + meals[3] + ": " + meal24 + "<br>" + meals[4] + ": " + meal25);
+    myText += ("<h4>" + days[5] + "</h4>" + meals[0] + ": " + meal26 + "<br>" + meals[1] + ": " + meal27 + "<br>" + meals[2] + ": " + meal28 + "<br>" + meals[3] + ": " + meal29 + "<br>" + meals[4] + ": " + meal30);
+    myText += ("<h4>" + days[6] + "</h4>" + meals[0] + ": " + meal31 + "<br>" + meals[1] + ": " + meal32 + "<br>" + meals[2] + ": " + meal33 + "<br>" + meals[3] + ": " + meal34 + "<br>" + meals[4] + ": " + meal35 + "<br>");
     // Used this page to create a "Print this page" button   https://wcmshelp.ucsc.edu/advanced/print-button.html 
-    myText += ("<div><br><button onClick='window.print()'>Print this page</button></div>")
+    myText += ("<div><br><button onClick='window.print()'>Print this page</button></div><br>");
+    // Below links showed me how to create a link to download the page
+    //https://www.w3schools.com/howto/howto_js_get_url.asp
+    //https://blog.logrocket.com/programmatically-downloading-files-browser/
+    myText += ("<a href=" + window.location.href + " title='Download Meal Plan' download='mealplan.pdf'>Download Meal Plan</a>");
     myText += ("</body>\n</html>");
     flyWindow = window.open('about:blank','myPop','width=800,height=800,left=200,top=200');
     flyWindow.document.write(myText);
