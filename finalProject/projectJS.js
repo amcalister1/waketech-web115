@@ -7,13 +7,19 @@ document.getElementById('section').textContent = "Section: 0001";
 let meals = ['Breakfast', 'Morning Snack', 'Lunch', 'Afternoon Snack', 'Dinner'];
 let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
+//Create a variable to access the meal div
+let mealDiv = document.getElementById('mealDiv');
+let mealForm = document.getElementById('mealForm');
+let mealButtons = document.getElementById('mealButtons');
+let inputForm = document.getElementById('inputForm');
+
 //Hides the meal form and buttons until the email address is validated
-$(document).ready(function(){
-    $('#mealForm').hide();
-  });
-$(document).ready(function(){
-  $('#mealButtons').hide();
-  });
+if (mealForm) {
+    mealForm.style.display = "none";
+}
+if (mealButtons) {
+    mealButtons.style.display = "none";
+}
 
 //Validates the email address and unhides the meal form
 let valBtn = document.getElementById("validButton");
@@ -25,18 +31,10 @@ let valBtn = document.getElementById("validButton");
                 window.alert("Please enter a valid email address!");
             }
             else {
-                $(document).ready(function(){
-                    $('#mealForm').show();
-                  ;
-                });
-                $(document).ready(function(){
-                    $('#mealButtons').show();
-                  ;
-                });
+                mealForm.style.display = "block";
+                mealButtons.style.display = "block";
             // Wanted to hide the inputButtons once email validation is complete.  I feel like this would help prevent confusion for a user.
-            $(document).ready(function(){
-                $('#inputForm').hide();
-                });
+            inputForm.style.display = "none";
             mealChoice();
             }
 		});
@@ -46,10 +44,6 @@ let clrBtn1 = document.getElementById("clearButton1");
 clrBtn1.addEventListener("click", function() {
     document.getElementById("inputForm").reset();
 });
-
-//Create a variable to access the meal div
-let mealDiv = document.getElementById('mealDiv');
-let mealForm = document.getElementById('mealForm');
 
 //Function to create meal choice inputs
 function mealChoice(){
